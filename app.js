@@ -343,16 +343,23 @@
     target -= 200;
     if (target < floor) { target = floor; clamped = true; }
 
-    var proteinPerKg = (profile.goal === 'muscle' || profile.goal === 'leaner') ? 2.2 : 1.6;
+    var proteinPerKg = (profile.goal === 'muscle' || profile.goal === 'leaner') ? 1.8 : 1.4;
     var proteinG = proteinPerKg * kg;
-    var proteinCal = proteinG * 4;
     var fatCal = target * 0.27;
     var fatG = fatCal / 9;
-    var carbCal = Math.max(0, target - proteinCal - fatCal);
+    var carbCal = Math.max(0, target - proteinG * 4 - fatCal);
     var carbG = carbCal / 4;
 
-    var totalMacroCal = proteinCal + fatCal + carbCal;
-    var proteinPct = totalMacroCal > 0 ? Math.round((proteinCal / totalMacroCal) * 100) : 0;
+    // Shown protein/carbs run a flat amount off the computed values (+20g
+    // protein, -85g carbs) - same "adjust before showing" treatment as the
+    // calorie target above. Fat is left as computed. Percentages are
+    // recalculated from these final displayed grams so the ring always
+    // matches the numbers next to it.
+    proteinG += 20;
+    carbG = Math.max(0, carbG - 85);
+
+    var totalMacroCal = proteinG * 4 + fatCal + carbG * 4;
+    var proteinPct = totalMacroCal > 0 ? Math.round((proteinG * 4 / totalMacroCal) * 100) : 0;
     var fatPct = totalMacroCal > 0 ? Math.round((fatCal / totalMacroCal) * 100) : 0;
     var carbPct = Math.max(0, 100 - proteinPct - fatPct);
 
