@@ -569,6 +569,47 @@
       tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } }
   ];
 
+  // ==================== Snack database ====================
+  // Same tag shape as RECIPES so recipePassesRestrictions() works on both.
+  var SNACKS = [
+    { id: 's1', name: 'Greek Yogurt with Berries', calories: 150, protein: 15, carbs: 18, fat: 2,
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 's2', name: 'Apple with Peanut Butter', calories: 190, protein: 5, carbs: 25, fat: 8,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: true } },
+    { id: 's3', name: 'Hummus and Carrots', calories: 150, protein: 5, carbs: 18, fat: 7,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's4', name: 'Two Boiled Eggs', calories: 140, protein: 12, carbs: 1, fat: 10,
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's5', name: 'Protein Shake', calories: 160, protein: 25, carbs: 8, fat: 3,
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 's6', name: 'Edamame (Steamed & Salted)', calories: 120, protein: 11, carbs: 9, fat: 5,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's7', name: 'Rice Cakes with Almond Butter', calories: 180, protein: 5, carbs: 20, fat: 9,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: true } },
+    { id: 's8', name: 'Mixed Nuts (Small Handful)', calories: 170, protein: 6, carbs: 6, fat: 15,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: true } },
+    { id: 's9', name: 'Cottage Cheese with Pineapple', calories: 150, protein: 16, carbs: 14, fat: 3,
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 's10', name: 'Dark Chocolate Square', calories: 90, protein: 1, carbs: 9, fat: 6,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's11', name: 'Banana', calories: 105, protein: 1, carbs: 27, fat: 0,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's12', name: 'Roasted Chickpeas', calories: 140, protein: 6, carbs: 20, fat: 4,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's13', name: 'String Cheese', calories: 80, protein: 7, carbs: 1, fat: 6,
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 's14', name: 'Celery with Peanut Butter', calories: 190, protein: 7, carbs: 12, fat: 14,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: true } },
+    { id: 's15', name: 'Air-Popped Popcorn', calories: 110, protein: 3, carbs: 22, fat: 2,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's16', name: 'Turkey & Cheese Roll-Ups', calories: 180, protein: 18, carbs: 2, fat: 11,
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: false, pescatarian: false, containsNuts: false } },
+    { id: 's17', name: 'Trail Mix', calories: 210, protein: 5, carbs: 24, fat: 11,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: true } },
+    { id: 's18', name: 'Smoked Salmon on Cucumber Rounds', calories: 120, protein: 12, carbs: 3, fat: 6,
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } }
+  ];
+
   // ==================== Utilities ====================
   function uid() { return Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4); }
 
@@ -635,8 +676,28 @@
       // demo profile whose ingredients don't suit its own nationality would
       // load to an empty "What Can I Cook?" page.
       ingredients: ['spaghetti', 'garlic', 'olive oil', 'tomato', 'mozzarella', 'basil', 'bread', 'chili flakes', 'eggs', 'spinach'],
+      log: {
+        date: todayKey(),
+        items: [
+          { id: 'seed-log-1', name: 'Greek Yogurt with Berries', calories: 150, protein: 15, carbs: 18, fat: 2, addedAt: Date.now() },
+          { id: 'seed-log-2', name: 'Grilled Chicken & Rice Bowl', calories: 520, protein: 42, carbs: 55, fat: 14, addedAt: Date.now() }
+        ]
+      },
       meta: { seeded: true, createdAt: Date.now() }
     };
+  }
+
+  // ==================== Date helpers ====================
+  function todayKey() {
+    var d = new Date();
+    var m = d.getMonth() + 1, day = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (day < 10 ? '0' : '') + day;
+  }
+
+  function ensureLogFresh() {
+    if (!state.log || state.log.date !== todayKey()) {
+      state.log = { date: todayKey(), items: [] };
+    }
   }
 
   // ==================== Storage ====================
@@ -682,6 +743,9 @@
       p.activityLevel = ACTIVITY_FACTORS[p.activityLevel] ? p.activityLevel : 'moderate';
       p.restrictions = Array.isArray(p.restrictions) ? p.restrictions : [];
       p.goal = GOAL_LABELS[p.goal] ? p.goal : 'muscle';
+      if (!parsed.log || typeof parsed.log !== 'object' || !Array.isArray(parsed.log.items)) {
+        parsed.log = { date: todayKey(), items: [] };
+      }
       return parsed;
     } catch (e) {
       console.warn('NourishMe: failed to load saved data, falling back to sample data.', e);
@@ -697,6 +761,7 @@
   function initState() {
     state = loadState();
     if (!state) state = buildSampleData();
+    ensureLogFresh();
     saveState();
   }
 
@@ -854,7 +919,7 @@
   }
 
   // ==================== UI state ====================
-  var uiState = { view: 'plan', heightUnit: null, weightUnit: null };
+  var uiState = { view: 'plan', heightUnit: null, weightUnit: null, snackCeiling: 200, surpriseId: null };
 
   // ==================== Plan render ====================
   function renderRestrictionGrid() {
@@ -881,6 +946,7 @@
         saveState();
         renderRestrictionGrid();
         renderCookView();
+        renderSnackView();
       });
     });
   }
@@ -1096,6 +1162,7 @@
             macroStat('Fat', r.macros.fat, 'g', 'fat') +
           '</div>' +
           (dietTags ? '<div class="diet-tags">' + dietTags + '</div>' : '') +
+          '<button type="button" class="btn btn-ghost btn-block add-log-btn" data-kind="recipe" data-id="' + r.id + '">+ Add to today\'s log</button>' +
         '</div>';
       }).join('');
 
@@ -1107,6 +1174,8 @@
         '<div class="recipe-subgrid">' + cards + '</div>' +
       '</div>';
     }).join('');
+
+    wireAddToLogButtons(grid);
   }
 
   function groupCandidatesByCuisine(candidates, favoredCuisine) {
@@ -1155,6 +1224,226 @@
     renderRecipeGrid();
   }
 
+  // ==================== Add-to-log wiring (shared by recipes & snacks) ====================
+  function wireAddToLogButtons(container) {
+    container.querySelectorAll('.add-log-btn').forEach(function (btn) {
+      on(btn, 'click', function () {
+        var kind = btn.dataset.kind;
+        var id = btn.dataset.id;
+        var source = kind === 'snack' ? SNACKS : RECIPES;
+        var item = source.filter(function (x) { return x.id === id; })[0];
+        if (!item) return;
+        var macros = kind === 'snack' ? item : item.macros;
+        addToLog({ name: item.name, calories: macros.calories, protein: macros.protein, carbs: macros.carbs, fat: macros.fat });
+
+        var original = btn.textContent;
+        btn.textContent = 'Added ✓';
+        btn.disabled = true;
+        setTimeout(function () {
+          try {
+            btn.textContent = original;
+            btn.disabled = false;
+          } catch (e) { /* button may no longer be in the DOM after a re-render */ }
+        }, 1400);
+      });
+    });
+  }
+
+  function addToLog(entry) {
+    ensureLogFresh();
+    state.log.items.push({
+      id: uid(),
+      name: entry.name,
+      calories: Math.max(0, Math.round(entry.calories) || 0),
+      protein: Math.max(0, Math.round(entry.protein) || 0),
+      carbs: Math.max(0, Math.round(entry.carbs) || 0),
+      fat: Math.max(0, Math.round(entry.fat) || 0),
+      addedAt: Date.now()
+    });
+    saveState();
+  }
+
+  // ==================== Snack finder ====================
+  function getMatchedSnacks(state, ceiling) {
+    var profile = state.profile;
+    var filtered = SNACKS.filter(function (s) {
+      return s.calories <= ceiling && recipePassesRestrictions(s, profile.restrictions);
+    });
+
+    var highlightProtein = profile.goal === 'muscle' || profile.goal === 'leaner';
+    var scored = filtered.map(function (s) {
+      return { snack: s, ratio: (s.protein * 4) / s.calories };
+    });
+
+    scored.sort(function (a, b) {
+      if (highlightProtein) return b.ratio - a.ratio;
+      return a.snack.calories - b.snack.calories;
+    });
+
+    var badgeCount = 0;
+    scored.forEach(function (c) {
+      c.badge = highlightProtein && badgeCount < 3 && c.ratio > 0.32;
+      if (c.badge) badgeCount++;
+    });
+
+    return scored;
+  }
+
+  function renderSnackView() {
+    var grid = document.getElementById('snack-grid');
+    var meta = document.getElementById('snack-meta-row');
+    var scored = getMatchedSnacks(state, uiState.snackCeiling);
+
+    var metaBits = ['Showing snacks under ' + uiState.snackCeiling + ' kcal'];
+    if (state.profile.restrictions.length && state.profile.restrictions.indexOf('none') === -1) {
+      var labels = state.profile.restrictions.map(function (id) {
+        var r = RESTRICTIONS.filter(function (x) { return x.id === id; })[0];
+        return r ? r.label : id;
+      });
+      metaBits.push('Filtered by: ' + labels.join(', '));
+    }
+    meta.textContent = metaBits.join(' · ');
+
+    if (!scored.length) {
+      grid.innerHTML = '<div class="empty-state">No snacks fit that limit and your dietary restrictions right now. Try a higher calorie limit. 🍽️</div>';
+      return;
+    }
+
+    grid.innerHTML = scored.map(function (c) {
+      var s = c.snack;
+      var dietTags = dietTagList(s.tags).map(function (t) { return '<span class="diet-tag">' + t + '</span>'; }).join('');
+      var highlightClass = (uiState.surpriseId === s.id) ? ' snack-highlight' : '';
+
+      return '<div class="recipe-card' + highlightClass + '" data-snack-card="' + s.id + '">' +
+        '<div class="recipe-header">' +
+          '<div>' +
+            '<h3 class="recipe-name">' + escapeHtml(s.name) + '</h3>' +
+            '<p class="recipe-meta">' + s.calories + ' kcal</p>' +
+          '</div>' +
+          (c.badge ? '<span class="goal-badge">Great for your goal</span>' : '') +
+        '</div>' +
+        '<div class="recipe-macros">' +
+          macroStat('Cal', s.calories, '', 'cal') +
+          macroStat('Protein', s.protein, 'g', 'protein') +
+          macroStat('Carbs', s.carbs, 'g', 'carbs') +
+          macroStat('Fat', s.fat, 'g', 'fat') +
+        '</div>' +
+        (dietTags ? '<div class="diet-tags">' + dietTags + '</div>' : '') +
+        '<button type="button" class="btn btn-ghost btn-block add-log-btn" data-kind="snack" data-id="' + s.id + '">+ Add to today\'s log</button>' +
+      '</div>';
+    }).join('');
+
+    wireAddToLogButtons(grid);
+
+    if (uiState.surpriseId) {
+      var el = grid.querySelector('[data-snack-card="' + uiState.surpriseId + '"]');
+      if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var idToClear = uiState.surpriseId;
+      setTimeout(function () {
+        if (uiState.surpriseId === idToClear) {
+          uiState.surpriseId = null;
+          renderSnackView();
+        }
+      }, 2200);
+    }
+  }
+
+  // ==================== Today's log ====================
+  function computeLogTotals() {
+    var totals = { calories: 0, protein: 0, carbs: 0, fat: 0 };
+    state.log.items.forEach(function (it) {
+      totals.calories += it.calories || 0;
+      totals.protein += it.protein || 0;
+      totals.carbs += it.carbs || 0;
+      totals.fat += it.fat || 0;
+    });
+    return totals;
+  }
+
+  function progressRow(label, current, target, unit, color) {
+    var pct = target > 0 ? Math.min(100, Math.round((current / target) * 100)) : 0;
+    var over = current > target;
+    var fillColor = over ? 'var(--red)' : color;
+    return '<div class="progress-row">' +
+      '<div class="progress-row-top">' +
+        '<span class="progress-label" style="color:' + color + '">' + label + '</span>' +
+        '<span class="progress-value">' + Math.round(current) + unit + ' / ' + Math.round(target) + unit + '</span>' +
+      '</div>' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%; background:' + fillColor + '"></div></div>' +
+    '</div>';
+  }
+
+  function totalsOnlyRow(label, current, unit, color) {
+    return '<div class="progress-row">' +
+      '<div class="progress-row-top">' +
+        '<span class="progress-label" style="color:' + color + '">' + label + '</span>' +
+        '<span class="progress-value">' + Math.round(current) + unit + '</span>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderLogView() {
+    ensureLogFresh();
+    var card = document.getElementById('log-summary-card');
+    var plan = hasProfile() ? computePlan(state.profile) : null;
+    var totals = computeLogTotals();
+
+    if (plan) {
+      var rows =
+        progressRow('Calories', totals.calories, plan.calories, '', 'var(--green)') +
+        progressRow('Protein', totals.protein, plan.protein.g, 'g', 'var(--protein)') +
+        progressRow('Carbs', totals.carbs, plan.carbs.g, 'g', 'var(--carbs)') +
+        progressRow('Fat', totals.fat, plan.fat.g, 'g', 'var(--fat)');
+
+      var remaining = plan.calories - totals.calories;
+      var status = remaining >= 0
+        ? remaining.toLocaleString() + ' kcal left today — you\'re on track.'
+        : Math.abs(remaining).toLocaleString() + ' kcal over today\'s target — that\'s alright, tomorrow is a fresh start.';
+
+      card.innerHTML =
+        '<h2 class="card-title">🎯 Today vs your target</h2>' +
+        '<div class="log-progress-rows">' + rows + '</div>' +
+        '<p class="result-summary">' + escapeHtml(status) + '</p>';
+    } else {
+      card.innerHTML =
+        '<h2 class="card-title">🎯 Today\'s totals</h2>' +
+        '<p class="ingredient-empty">Fill in <button type="button" class="link-btn" id="log-plan-link">Your Plan</button> to see today\'s target alongside what you\'ve logged.</p>' +
+        '<div class="log-progress-rows">' +
+          totalsOnlyRow('Calories', totals.calories, '', 'var(--green)') +
+          totalsOnlyRow('Protein', totals.protein, 'g', 'var(--protein)') +
+          totalsOnlyRow('Carbs', totals.carbs, 'g', 'var(--carbs)') +
+          totalsOnlyRow('Fat', totals.fat, 'g', 'var(--fat)') +
+        '</div>';
+      on(document.getElementById('log-plan-link'), 'click', function () { switchView('plan'); });
+    }
+
+    renderLogItemsList();
+  }
+
+  function renderLogItemsList() {
+    var el = document.getElementById('log-items-list');
+    if (!state.log.items.length) {
+      el.innerHTML = '<div class="ingredient-empty">Nothing logged yet today — add a meal, a snack, or use Quick add below.</div>';
+      return;
+    }
+    el.innerHTML = state.log.items.map(function (it) {
+      return '<div class="log-item">' +
+        '<div class="log-item-main">' +
+          '<span class="log-item-name">' + escapeHtml(it.name) + '</span>' +
+          '<span class="log-item-macros">' + it.calories + ' cal · P ' + it.protein + 'g · C ' + it.carbs + 'g · F ' + it.fat + 'g</span>' +
+        '</div>' +
+        '<button type="button" class="log-item-remove" data-id="' + it.id + '" aria-label="Remove">✕</button>' +
+      '</div>';
+    }).join('');
+    el.querySelectorAll('.log-item-remove').forEach(function (btn) {
+      on(btn, 'click', function () {
+        state.log.items = state.log.items.filter(function (it) { return it.id !== btn.dataset.id; });
+        saveState();
+        renderLogView();
+      });
+    });
+  }
+
   // ==================== Static event wiring ====================
   function wireStaticEvents() {
     document.querySelectorAll('.tab-btn').forEach(function (btn) {
@@ -1181,6 +1470,8 @@
       saveState();
       renderResult();
       renderCookView();
+      renderSnackView();
+      renderLogView();
     });
 
     on(document.getElementById('ingredient-form'), 'submit', function (ev) {
@@ -1203,6 +1494,46 @@
       saveState();
       renderPlanView();
       renderCookView();
+      renderSnackView();
+      renderLogView();
+    });
+
+    document.querySelectorAll('#snack-ceiling-toggle .unit-btn').forEach(function (btn) {
+      on(btn, 'click', function () {
+        uiState.snackCeiling = Number(btn.dataset.ceiling);
+        document.querySelectorAll('#snack-ceiling-toggle .unit-btn').forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+        });
+        renderSnackView();
+      });
+    });
+
+    on(document.getElementById('surprise-btn'), 'click', function () {
+      var pool = getMatchedSnacks(state, uiState.snackCeiling);
+      if (!pool.length) return;
+      var pick = pool[Math.floor(Math.random() * pool.length)];
+      uiState.surpriseId = pick.snack.id;
+      renderSnackView();
+    });
+
+    on(document.getElementById('quick-add-form'), 'submit', function (ev) {
+      ev.preventDefault();
+      var name = document.getElementById('qa-name').value.trim();
+      var calories = Number(document.getElementById('qa-calories').value);
+      if (!name || !isFinite(calories) || calories < 0) return;
+      var protein = Number(document.getElementById('qa-protein').value) || 0;
+      var carbs = Number(document.getElementById('qa-carbs').value) || 0;
+      var fat = Number(document.getElementById('qa-fat').value) || 0;
+      addToLog({ name: name, calories: calories, protein: protein, carbs: carbs, fat: fat });
+      ev.target.reset();
+      renderLogView();
+    });
+
+    on(document.getElementById('clear-log-btn'), 'click', function () {
+      if (!confirm('Clear everything logged today?')) return;
+      state.log = { date: todayKey(), items: [] };
+      saveState();
+      renderLogView();
     });
   }
 
@@ -1211,7 +1542,11 @@
     document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.toggle('active', b.dataset.view === view); });
     document.getElementById('plan-view').classList.toggle('hidden', view !== 'plan');
     document.getElementById('cook-view').classList.toggle('hidden', view !== 'cook');
+    document.getElementById('snack-view').classList.toggle('hidden', view !== 'snack');
+    document.getElementById('log-view').classList.toggle('hidden', view !== 'log');
     if (view === 'cook') renderCookView();
+    if (view === 'snack') renderSnackView();
+    if (view === 'log') renderLogView();
   }
 
   // ==================== Init ====================
@@ -1229,6 +1564,8 @@
       wireStaticEvents();
       renderPlanView();
       renderCookView();
+      renderSnackView();
+      renderLogView();
     } catch (e) {
       console.error('NourishMe: startup error, resetting to sample data.', e);
       try {
@@ -1236,6 +1573,8 @@
         saveState();
         renderPlanView();
         renderCookView();
+        renderSnackView();
+        renderLogView();
       } catch (e2) {
         console.error('NourishMe: failed to recover after startup error.', e2);
       }
