@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>NourishMe</title>
+<meta name="description" content="A personalised nutrition plan and meal finder — your daily targets and what you can cook right now." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A5%97%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="app">
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">🥗</span>
+        <span class="brand-name">NourishMe</span>
+      </div>
+      <nav class="tabs" id="main-tabs">
+        <button class="tab-btn active" data-view="plan" type="button">Your Plan</button>
+        <button class="tab-btn" data-view="cook" type="button">What Can I Cook?</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="plan-view" class="view">
+    <div class="container">
+      <div class="hero-row">
+        <div>
+          <h1 class="hero-title">Your Plan</h1>
+          <p class="hero-sub">Tell us about you — we'll turn it into a daily target.</p>
+        </div>
+        <button class="btn btn-ghost btn-reset" id="reset-btn" type="button">↺ Reset</button>
+      </div>
+
+      <section class="card">
+        <h2 class="card-title">📋 About you</h2>
+        <form id="plan-form" class="plan-form">
+          <div class="field-grid">
+            <label class="field">
+              <span class="field-label">Age</span>
+              <input type="number" id="f-age" min="10" max="100" step="1" required />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Gender</span>
+              <select id="f-gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="unspecified">Prefer not to say</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field-label">Nationality</span>
+              <input type="text" id="f-nationality" placeholder="e.g. Italian, Mexican, Indian…" maxlength="40" />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Activity level <em>*</em></span>
+              <select id="f-activity" required>
+                <option value="sedentary">Sedentary (little/no exercise)</option>
+                <option value="light">Light (1-3 days/week)</option>
+                <option value="moderate">Moderate (3-5 days/week)</option>
+                <option value="active">Active (6-7 days/week)</option>
+                <option value="very_active">Very active (hard exercise daily)</option>
+              </select>
+            </label>
+
+            <div class="field">
+              <span class="field-label">Weight</span>
+              <div class="unit-input-row">
+                <input type="number" id="f-weight" min="1" step="0.1" required />
+                <div class="unit-toggle" id="weight-unit-toggle">
+                  <button type="button" class="unit-btn active" data-unit="kg">kg</button>
+                  <button type="button" class="unit-btn" data-unit="lb">lb</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">Height</span>
+              <div class="unit-input-row">
+                <input type="number" id="f-height-cm" min="1" step="0.1" placeholder="cm" required />
+                <div class="unit-input-ftin" id="height-ftin-inputs" hidden>
+                  <input type="number" id="f-height-ft" min="0" max="8" step="1" placeholder="ft" />
+                  <input type="number" id="f-height-in" min="0" max="11" step="1" placeholder="in" />
+                </div>
+                <div class="unit-toggle" id="height-unit-toggle">
+                  <button type="button" class="unit-btn active" data-unit="cm">cm</button>
+                  <button type="button" class="unit-btn" data-unit="ftin">ft/in</button>
+                </div>
+              </div>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Goal</span>
+              <select id="f-goal">
+                <option value="lose">Lose weight</option>
+                <option value="gain">Gain weight</option>
+                <option value="muscle">Build muscle</option>
+                <option value="leaner">Become leaner</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="field field-full">
+            <span class="field-label">Dietary restrictions</span>
+            <div class="restriction-grid" id="restriction-grid"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Update my plan</button>
+        </form>
+      </section>
+
+      <section class="card result-card" id="result-card">
+        <!-- rendered by JS -->
+      </section>
+    </div>
+  </main>
+
+  <main id="cook-view" class="view hidden">
+    <div class="container">
+      <div class="hero-row">
+        <div>
+          <h1 class="hero-title">What Can I Cook?</h1>
+          <p class="hero-sub">Add what's in your kitchen — we'll find meals that fit.</p>
+        </div>
+      </div>
+
+      <div class="plan-nudge" id="plan-nudge" hidden>
+        👋 Fill in <button type="button" class="link-btn" id="plan-nudge-link">Your Plan</button> for goal-matched picks and macro highlights — you can still browse recipes without it.
+      </div>
+
+      <section class="card">
+        <h2 class="card-title">🧺 Your ingredients</h2>
+        <form id="ingredient-form" class="ingredient-form">
+          <input type="text" id="f-ingredient" placeholder="e.g. chicken, rice, spinach…" maxlength="30" autocomplete="off" />
+          <button type="submit" class="btn btn-primary">+ Add</button>
+        </form>
+        <div class="ingredient-chips" id="ingredient-chips"></div>
+      </section>
+
+      <div class="cook-meta-row" id="cook-meta-row"></div>
+
+      <section class="recipe-grid" id="recipe-grid"></section>
+    </div>
+  </main>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
