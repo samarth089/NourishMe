@@ -343,7 +343,7 @@
     target -= 200;
     if (target < floor) { target = floor; clamped = true; }
 
-    var proteinPerKg = (profile.goal === 'muscle' || profile.goal === 'leaner') ? 1.8 : 1.4;
+    var proteinPerKg = (profile.goal === 'muscle' || profile.goal === 'leaner') ? 2.2 : 1.6;
     var proteinG = proteinPerKg * kg;
     var proteinCal = proteinG * 4;
     var fatCal = target * 0.27;
