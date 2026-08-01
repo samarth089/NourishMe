@@ -368,9 +368,22 @@ body {
 .cook-meta-row { font-size: 13px; color: var(--text-muted); margin: -6px 0 14px; padding: 0 2px; }
 
 /* ---------- Recipe grid ---------- */
-.recipe-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.recipe-grid { display: flex; flex-direction: column; gap: 28px; }
+
+.cuisine-section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+.cuisine-section-heading .cuisine-name { font-size: 17px; font-weight: 800; color: var(--green-dark); }
+.cuisine-section-heading .cuisine-count { font-size: 12.5px; color: var(--text-muted); }
+
+.recipe-subgrid { display: grid; grid-template-columns: 1fr; gap: 14px; }
 @media (min-width: 640px) {
-  .recipe-grid { grid-template-columns: 1fr 1fr; }
+  .recipe-subgrid { grid-template-columns: 1fr 1fr; }
 }
 
 .recipe-card {

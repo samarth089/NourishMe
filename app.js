@@ -32,7 +32,17 @@
     'Middle Eastern': ['lebanon', 'lebanese', 'middle east', 'israel', 'israeli', 'egypt', 'egyptian', 'turkish', 'turkey'],
     Korean: ['korea', 'korean'],
     Scandinavian: ['sweden', 'swedish', 'norway', 'norwegian', 'scandinavia'],
-    French: ['france', 'french']
+    French: ['france', 'french'],
+    Vietnamese: ['vietnam', 'vietnamese'],
+    Spanish: ['spain', 'spanish'],
+    Brazilian: ['brazil', 'brazilian'],
+    Ethiopian: ['ethiopia', 'ethiopian'],
+    Caribbean: ['jamaica', 'jamaican', 'caribbean', 'trinidad', 'trinidadian'],
+    Moroccan: ['morocco', 'moroccan'],
+    German: ['germany', 'german'],
+    Filipino: ['philippines', 'filipino', 'philippine'],
+    Peruvian: ['peru', 'peruvian'],
+    British: ['britain', 'british', 'england', 'english', 'uk']
   };
 
   // ==================== Recipe database ====================
@@ -336,7 +346,227 @@
     { id: 'r74', name: 'Baked Apple Crumble', cuisine: 'American', prepTime: 25,
       ingredients: ['apple', 'oats', 'cinnamon', 'honey', 'butter'],
       macros: { calories: 260, protein: 3, carbs: 44, fat: 9 },
-      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: false, dairyFree: false, pescatarian: true, containsNuts: false } }
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: false, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 'r75', name: 'Pho Ga (Chicken Noodle Soup)', cuisine: 'Vietnamese', prepTime: 40,
+      ingredients: ['chicken', 'rice noodles', 'onion', 'ginger', 'star anise', 'cilantro'],
+      macros: { calories: 420, protein: 28, carbs: 55, fat: 8 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r76', name: 'Vietnamese Spring Rolls', cuisine: 'Vietnamese', prepTime: 20,
+      ingredients: ['rice paper', 'shrimp', 'lettuce', 'rice noodles', 'mint', 'carrot'],
+      macros: { calories: 260, protein: 14, carbs: 40, fat: 5 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r77', name: 'Bun Cha (Grilled Pork with Noodles)', cuisine: 'Vietnamese', prepTime: 35,
+      ingredients: ['pork', 'rice noodles', 'lettuce', 'fish sauce', 'carrot'],
+      macros: { calories: 480, protein: 30, carbs: 50, fat: 16 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r78', name: 'Vietnamese Iced Coffee', cuisine: 'Vietnamese', prepTime: 5,
+      ingredients: ['coffee', 'condensed milk', 'ice'],
+      macros: { calories: 180, protein: 3, carbs: 30, fat: 6 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 'r79', name: 'Paella', cuisine: 'Spanish', prepTime: 45,
+      ingredients: ['rice', 'shrimp', 'chicken', 'saffron', 'bell pepper', 'peas'],
+      macros: { calories: 520, protein: 34, carbs: 58, fat: 14 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r80', name: 'Spanish Tortilla (Potato Omelette)', cuisine: 'Spanish', prepTime: 30,
+      ingredients: ['egg', 'potato', 'onion', 'olive oil'],
+      macros: { calories: 340, protein: 14, carbs: 30, fat: 18 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r81', name: 'Gazpacho', cuisine: 'Spanish', prepTime: 15,
+      ingredients: ['tomato', 'cucumber', 'bell pepper', 'garlic', 'olive oil', 'bread'],
+      macros: { calories: 180, protein: 4, carbs: 22, fat: 9 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: false, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r82', name: 'Patatas Bravas', cuisine: 'Spanish', prepTime: 25,
+      ingredients: ['potato', 'tomato', 'paprika', 'garlic', 'olive oil'],
+      macros: { calories: 300, protein: 5, carbs: 42, fat: 13 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r83', name: 'Feijoada (Black Bean & Pork Stew)', cuisine: 'Brazilian', prepTime: 60,
+      ingredients: ['black beans', 'pork', 'onion', 'garlic', 'rice'],
+      macros: { calories: 560, protein: 32, carbs: 52, fat: 22 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r84', name: 'Moqueca (Brazilian Coconut Fish Stew)', cuisine: 'Brazilian', prepTime: 35,
+      ingredients: ['fish', 'coconut milk', 'tomato', 'bell pepper', 'cilantro'],
+      macros: { calories: 380, protein: 30, carbs: 16, fat: 22 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r85', name: 'Pão de Queijo (Cheese Bread Bites)', cuisine: 'Brazilian', prepTime: 25,
+      ingredients: ['tapioca flour', 'cheese', 'egg', 'milk'],
+      macros: { calories: 220, protein: 6, carbs: 24, fat: 11 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 'r86', name: 'Misir Wot (Spiced Red Lentils)', cuisine: 'Ethiopian', prepTime: 35,
+      ingredients: ['lentils', 'onion', 'garlic', 'berbere spice', 'tomato'],
+      macros: { calories: 320, protein: 18, carbs: 48, fat: 6 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r87', name: 'Doro Wat (Spiced Chicken Stew)', cuisine: 'Ethiopian', prepTime: 50,
+      ingredients: ['chicken', 'onion', 'berbere spice', 'garlic', 'egg'],
+      macros: { calories: 460, protein: 36, carbs: 20, fat: 24 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r88', name: 'Injera with Vegetable Combo', cuisine: 'Ethiopian', prepTime: 30,
+      ingredients: ['teff flour', 'cabbage', 'carrot', 'potato', 'collard greens'],
+      macros: { calories: 340, protein: 10, carbs: 60, fat: 6 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r89', name: 'Jerk Chicken with Rice and Peas', cuisine: 'Caribbean', prepTime: 45,
+      ingredients: ['chicken', 'allspice', 'scotch bonnet', 'rice', 'kidney beans', 'coconut milk'],
+      macros: { calories: 540, protein: 38, carbs: 52, fat: 18 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r90', name: 'Trinidadian Doubles (Chickpea Flatbread)', cuisine: 'Caribbean', prepTime: 30,
+      ingredients: ['chickpeas', 'flour', 'cumin', 'tamarind', 'cucumber'],
+      macros: { calories: 380, protein: 12, carbs: 62, fat: 9 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: false, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r91', name: 'Caribbean Black Bean Soup', cuisine: 'Caribbean', prepTime: 30,
+      ingredients: ['black beans', 'coconut milk', 'onion', 'garlic', 'lime'],
+      macros: { calories: 300, protein: 14, carbs: 44, fat: 8 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r92', name: 'Grilled Mahi Mahi with Mango Salsa', cuisine: 'Caribbean', prepTime: 25,
+      ingredients: ['mahi mahi', 'mango', 'red onion', 'lime', 'cilantro'],
+      macros: { calories: 320, protein: 32, carbs: 22, fat: 8 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r93', name: 'Chicken Tagine with Apricots', cuisine: 'Moroccan', prepTime: 50,
+      ingredients: ['chicken', 'apricot', 'onion', 'cinnamon', 'almonds', 'couscous'],
+      macros: { calories: 480, protein: 34, carbs: 46, fat: 16 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: true, glutenFree: false, dairyFree: true, pescatarian: false, containsNuts: true } },
+    { id: 'r94', name: 'Moroccan Vegetable Couscous', cuisine: 'Moroccan', prepTime: 30,
+      ingredients: ['couscous', 'zucchini', 'carrot', 'chickpeas', 'cumin', 'raisins'],
+      macros: { calories: 380, protein: 12, carbs: 68, fat: 6 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: false, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r95', name: 'Harira Soup (Lentil & Tomato Soup)', cuisine: 'Moroccan', prepTime: 40,
+      ingredients: ['lentils', 'tomato', 'chickpeas', 'celery', 'cilantro'],
+      macros: { calories: 260, protein: 14, carbs: 42, fat: 4 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r96', name: 'Bratwurst with Sauerkraut', cuisine: 'German', prepTime: 25,
+      ingredients: ['bratwurst', 'sauerkraut', 'mustard', 'potato'],
+      macros: { calories: 520, protein: 24, carbs: 34, fat: 32 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r97', name: 'German Potato Salad', cuisine: 'German', prepTime: 30,
+      ingredients: ['potato', 'bacon', 'red onion', 'vinegar', 'mustard'],
+      macros: { calories: 300, protein: 8, carbs: 38, fat: 12 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r98', name: 'Pretzel with Mustard', cuisine: 'German', prepTime: 15,
+      ingredients: ['pretzel', 'mustard', 'butter'],
+      macros: { calories: 320, protein: 9, carbs: 58, fat: 7 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: false, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 'r99', name: 'Chicken Adobo', cuisine: 'Filipino', prepTime: 40,
+      ingredients: ['chicken', 'soy sauce', 'vinegar', 'garlic', 'bay leaf', 'rice'],
+      macros: { calories: 480, protein: 36, carbs: 50, fat: 14 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: true, glutenFree: false, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r100', name: 'Pancit Noodles', cuisine: 'Filipino', prepTime: 25,
+      ingredients: ['rice noodles', 'chicken', 'cabbage', 'carrot', 'soy sauce'],
+      macros: { calories: 420, protein: 22, carbs: 56, fat: 10 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r101', name: 'Filipino Mango Float', cuisine: 'Filipino', prepTime: 20,
+      ingredients: ['mango', 'graham crackers', 'condensed milk', 'whipped cream'],
+      macros: { calories: 300, protein: 4, carbs: 46, fat: 11 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: false, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 'r102', name: 'Lomo Saltado (Stir-Fried Beef)', cuisine: 'Peruvian', prepTime: 30,
+      ingredients: ['beef', 'onion', 'tomato', 'soy sauce', 'french fries', 'rice'],
+      macros: { calories: 560, protein: 34, carbs: 54, fat: 20 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: false, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r103', name: 'Peruvian Ceviche', cuisine: 'Peruvian', prepTime: 20,
+      ingredients: ['white fish', 'lime', 'red onion', 'cilantro', 'sweet potato', 'corn'],
+      macros: { calories: 260, protein: 26, carbs: 24, fat: 4 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r104', name: 'Quinoa Salad Peruvian Style', cuisine: 'Peruvian', prepTime: 20,
+      ingredients: ['quinoa', 'tomato', 'cucumber', 'red onion', 'lime', 'cilantro'],
+      macros: { calories: 320, protein: 10, carbs: 50, fat: 9 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r105', name: 'Fish and Chips', cuisine: 'British', prepTime: 35,
+      ingredients: ['cod', 'potato', 'flour', 'peas', 'malt vinegar'],
+      macros: { calories: 620, protein: 32, carbs: 68, fat: 24 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: false, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r106', name: "Shepherd's Pie", cuisine: 'British', prepTime: 50,
+      ingredients: ['ground lamb', 'potato', 'carrot', 'peas', 'onion'],
+      macros: { calories: 480, protein: 28, carbs: 40, fat: 22 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: true, dairyFree: false, pescatarian: false, containsNuts: false } },
+    { id: 'r107', name: 'English Breakfast Plate', cuisine: 'British', prepTime: 25,
+      ingredients: ['eggs', 'bacon', 'baked beans', 'tomato', 'toast'],
+      macros: { calories: 540, protein: 30, carbs: 40, fat: 28 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: false, dairyFree: false, pescatarian: false, containsNuts: false } },
+    { id: 'r108', name: 'Buffalo Cauliflower Bites', cuisine: 'American', prepTime: 30,
+      ingredients: ['cauliflower', 'hot sauce', 'butter', 'flour'],
+      macros: { calories: 220, protein: 5, carbs: 24, fat: 12 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: false, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 'r109', name: 'Loaded Sweet Potato Skins', cuisine: 'American', prepTime: 35,
+      ingredients: ['sweet potato', 'cheddar', 'bacon', 'sour cream', 'chives'],
+      macros: { calories: 380, protein: 14, carbs: 36, fat: 20 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: true, dairyFree: false, pescatarian: false, containsNuts: false } },
+    { id: 'r110', name: 'Cobb Salad', cuisine: 'American', prepTime: 20,
+      ingredients: ['lettuce', 'chicken', 'bacon', 'egg', 'avocado', 'blue cheese'],
+      macros: { calories: 460, protein: 32, carbs: 12, fat: 32 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: true, dairyFree: false, pescatarian: false, containsNuts: false } },
+    { id: 'r111', name: 'Turkey Chili', cuisine: 'American', prepTime: 40,
+      ingredients: ['ground turkey', 'kidney beans', 'tomato', 'onion', 'chili powder'],
+      macros: { calories: 380, protein: 34, carbs: 32, fat: 12 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r112', name: 'Butternut Squash Soup', cuisine: 'American', prepTime: 35,
+      ingredients: ['butternut squash', 'onion', 'vegetable broth', 'cream', 'nutmeg'],
+      macros: { calories: 260, protein: 5, carbs: 38, fat: 10 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 'r113', name: 'Kale Caesar Salad', cuisine: 'American', prepTime: 15,
+      ingredients: ['kale', 'parmesan', 'croutons', 'chicken', 'caesar dressing'],
+      macros: { calories: 420, protein: 28, carbs: 22, fat: 24 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: false, dairyFree: false, pescatarian: false, containsNuts: false } },
+    { id: 'r114', name: 'Salmon Poke Bowl', cuisine: 'American', prepTime: 20,
+      ingredients: ['salmon', 'rice', 'edamame', 'cucumber', 'avocado', 'soy sauce'],
+      macros: { calories: 480, protein: 30, carbs: 52, fat: 16 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: false, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r115', name: 'Egg White Veggie Scramble', cuisine: 'American', prepTime: 10,
+      ingredients: ['egg whites', 'spinach', 'mushroom', 'bell pepper', 'onion'],
+      macros: { calories: 220, protein: 24, carbs: 10, fat: 6 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r116', name: 'Protein Smoothie (Banana Peanut Butter)', cuisine: 'American', prepTime: 5,
+      ingredients: ['banana', 'peanut butter', 'protein powder', 'milk', 'ice'],
+      macros: { calories: 380, protein: 30, carbs: 40, fat: 12 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: true } },
+    { id: 'r117', name: 'Green Detox Smoothie', cuisine: 'American', prepTime: 5,
+      ingredients: ['spinach', 'apple', 'cucumber', 'lemon', 'ginger'],
+      macros: { calories: 160, protein: 3, carbs: 38, fat: 1 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r118', name: 'Watermelon Feta Salad', cuisine: 'Mediterranean', prepTime: 10,
+      ingredients: ['watermelon', 'feta', 'mint', 'red onion', 'lime'],
+      macros: { calories: 220, protein: 6, carbs: 26, fat: 10 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 'r119', name: 'Roasted Beet and Goat Cheese Salad', cuisine: 'Mediterranean', prepTime: 30,
+      ingredients: ['beet', 'goat cheese', 'walnuts', 'arugula', 'balsamic'],
+      macros: { calories: 320, protein: 10, carbs: 24, fat: 20 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: true } },
+    { id: 'r120', name: 'Miso Soup with Tofu', cuisine: 'Japanese', prepTime: 15,
+      ingredients: ['miso paste', 'tofu', 'seaweed', 'scallion'],
+      macros: { calories: 120, protein: 8, carbs: 10, fat: 5 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: false, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r121', name: 'Teriyaki Salmon', cuisine: 'Japanese', prepTime: 25,
+      ingredients: ['salmon', 'teriyaki sauce', 'rice', 'broccoli'],
+      macros: { calories: 520, protein: 34, carbs: 50, fat: 16 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: false, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r122', name: 'Kimchi Fried Rice', cuisine: 'Korean', prepTime: 20,
+      ingredients: ['kimchi', 'rice', 'egg', 'scallion', 'sesame oil'],
+      macros: { calories: 420, protein: 12, carbs: 58, fat: 14 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r123', name: 'Bibimbap', cuisine: 'Korean', prepTime: 35,
+      ingredients: ['rice', 'beef', 'spinach', 'carrot', 'egg', 'gochujang'],
+      macros: { calories: 540, protein: 30, carbs: 60, fat: 16 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r124', name: 'Pad Thai', cuisine: 'Thai', prepTime: 25,
+      ingredients: ['rice noodles', 'shrimp', 'egg', 'bean sprouts', 'peanuts'],
+      macros: { calories: 480, protein: 22, carbs: 58, fat: 16 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: true } },
+    { id: 'r125', name: 'Thai Green Curry', cuisine: 'Thai', prepTime: 30,
+      ingredients: ['chicken', 'coconut milk', 'green curry paste', 'bell pepper', 'basil'],
+      macros: { calories: 460, protein: 28, carbs: 20, fat: 30 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 'r126', name: 'Falafel Wrap', cuisine: 'Middle Eastern', prepTime: 25,
+      ingredients: ['chickpeas', 'pita', 'tahini', 'cucumber', 'tomato', 'lettuce'],
+      macros: { calories: 420, protein: 14, carbs: 56, fat: 16 },
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: false, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 'r127', name: 'Shakshuka', cuisine: 'Middle Eastern', prepTime: 30,
+      ingredients: ['eggs', 'tomato', 'bell pepper', 'onion', 'cumin', 'feta'],
+      macros: { calories: 340, protein: 18, carbs: 18, fat: 22 },
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 'r128', name: 'Swedish Meatballs', cuisine: 'Scandinavian', prepTime: 35,
+      ingredients: ['beef', 'pork', 'breadcrumbs', 'cream', 'lingonberry jam'],
+      macros: { calories: 520, protein: 28, carbs: 30, fat: 30 },
+      tags: { vegetarian: false, vegan: false, halal: false, kosher: false, glutenFree: false, dairyFree: false, pescatarian: false, containsNuts: false } },
+    { id: 'r129', name: 'Gravlax (Cured Salmon)', cuisine: 'Scandinavian', prepTime: 20,
+      ingredients: ['salmon', 'dill', 'salt', 'sugar', 'mustard sauce'],
+      macros: { calories: 280, protein: 24, carbs: 6, fat: 18 },
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } }
   ];
 
   // ==================== Utilities ====================
@@ -832,41 +1062,75 @@
       return;
     }
 
-    grid.innerHTML = match.candidates.map(function (c) {
-      var r = c.recipe;
-      var ingredientTags = r.ingredients.map(function (ing) {
-        var got = c.have.indexOf(ing) !== -1;
-        return '<span class="ing-tag ' + (got ? 'have' : 'missing') + '">' + escapeHtml(capitalizeWords(ing)) + '</span>';
+    grid.innerHTML = groupCandidatesByCuisine(match.candidates, match.favoredCuisine).map(function (group) {
+      var cards = group.items.map(function (c) {
+        var r = c.recipe;
+        var ingredientTags = r.ingredients.map(function (ing) {
+          var got = c.have.indexOf(ing) !== -1;
+          return '<span class="ing-tag ' + (got ? 'have' : 'missing') + '">' + escapeHtml(capitalizeWords(ing)) + '</span>';
+        }).join('');
+
+        var missingNote = '';
+        if (match.haveAnyIngredients) {
+          missingNote = c.canMake
+            ? '<p class="missing-note ready">✓ You have everything for this</p>'
+            : '<p class="missing-note">Missing: ' + escapeHtml(c.missing.map(capitalizeWords).join(', ')) + '</p>';
+        }
+
+        var dietTags = dietTagList(r.tags).map(function (t) { return '<span class="diet-tag">' + t + '</span>'; }).join('');
+
+        return '<div class="recipe-card">' +
+          '<div class="recipe-header">' +
+            '<div>' +
+              '<h3 class="recipe-name">' + escapeHtml(r.name) + '</h3>' +
+              '<p class="recipe-meta">' + escapeHtml(r.cuisine) + ' · ' + r.prepTime + ' min</p>' +
+            '</div>' +
+            (c.badge ? '<span class="goal-badge">Great for your goal</span>' : '') +
+          '</div>' +
+          missingNote +
+          '<div class="recipe-ingredients">' + ingredientTags + '</div>' +
+          '<div class="recipe-macros">' +
+            macroStat('Cal', r.macros.calories, '', 'cal') +
+            macroStat('Protein', r.macros.protein, 'g', 'protein') +
+            macroStat('Carbs', r.macros.carbs, 'g', 'carbs') +
+            macroStat('Fat', r.macros.fat, 'g', 'fat') +
+          '</div>' +
+          (dietTags ? '<div class="diet-tags">' + dietTags + '</div>' : '') +
+        '</div>';
       }).join('');
 
-      var missingNote = '';
-      if (match.haveAnyIngredients) {
-        missingNote = c.canMake
-          ? '<p class="missing-note ready">✓ You have everything for this</p>'
-          : '<p class="missing-note">Missing: ' + escapeHtml(c.missing.map(capitalizeWords).join(', ')) + '</p>';
-      }
-
-      var dietTags = dietTagList(r.tags).map(function (t) { return '<span class="diet-tag">' + t + '</span>'; }).join('');
-
-      return '<div class="recipe-card">' +
-        '<div class="recipe-header">' +
-          '<div>' +
-            '<h3 class="recipe-name">' + escapeHtml(r.name) + '</h3>' +
-            '<p class="recipe-meta">' + escapeHtml(r.cuisine) + ' · ' + r.prepTime + ' min</p>' +
-          '</div>' +
-          (c.badge ? '<span class="goal-badge">Great for your goal</span>' : '') +
+      return '<div class="cuisine-section">' +
+        '<div class="cuisine-section-heading">' +
+          '<span class="cuisine-name">' + escapeHtml(group.cuisine) + '</span>' +
+          '<span class="cuisine-count">' + group.items.length + (group.items.length === 1 ? ' recipe' : ' recipes') + '</span>' +
         '</div>' +
-        missingNote +
-        '<div class="recipe-ingredients">' + ingredientTags + '</div>' +
-        '<div class="recipe-macros">' +
-          macroStat('Cal', r.macros.calories, '', 'cal') +
-          macroStat('Protein', r.macros.protein, 'g', 'protein') +
-          macroStat('Carbs', r.macros.carbs, 'g', 'carbs') +
-          macroStat('Fat', r.macros.fat, 'g', 'fat') +
-        '</div>' +
-        (dietTags ? '<div class="diet-tags">' + dietTags + '</div>' : '') +
+        '<div class="recipe-subgrid">' + cards + '</div>' +
       '</div>';
     }).join('');
+  }
+
+  function groupCandidatesByCuisine(candidates, favoredCuisine) {
+    var order = [];
+    var byCuisine = {};
+    candidates.forEach(function (c) {
+      var cuisine = c.recipe.cuisine;
+      if (!byCuisine[cuisine]) {
+        byCuisine[cuisine] = [];
+        order.push(cuisine);
+      }
+      byCuisine[cuisine].push(c);
+    });
+
+    order.sort(function (a, b) {
+      if (a === favoredCuisine) return -1;
+      if (b === favoredCuisine) return 1;
+      if (byCuisine[b].length !== byCuisine[a].length) return byCuisine[b].length - byCuisine[a].length;
+      return a.localeCompare(b);
+    });
+
+    return order.map(function (cuisine) {
+      return { cuisine: cuisine, items: byCuisine[cuisine] };
+    });
   }
 
   function macroStat(label, value, unit, cls) {

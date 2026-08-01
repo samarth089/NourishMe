@@ -15,7 +15,7 @@ Then open `http://localhost:8000`. Or open `index.html` directly in a browser.
 ## What it does
 
 - **Your Plan** — enter age, gender, nationality, weight/height (kg/lb, cm/ft-in), activity level, dietary restrictions, and goal. Computes a daily calorie target (Mifflin-St Jeor + activity factor + goal adjustment, with a safety floor) and a colour-coded protein/carbs/fat breakdown.
-- **What Can I Cook?** — add ingredients you have on hand; matches them against a built-in database of 74 recipes across 12 cuisines, filtered by your dietary restrictions and hard-filtered to your nationality's cuisine, with goal-fit badges and "missing ingredient" notes.
+- **What Can I Cook?** — add ingredients you have on hand; matches them against a built-in database of 129 recipes across 22 cuisines, grouped by cuisine, filtered by your dietary restrictions and hard-filtered to your nationality's cuisine, with goal-fit badges and "missing ingredient" notes.
 
 ## Data
 
