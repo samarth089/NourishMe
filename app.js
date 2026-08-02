@@ -607,7 +607,23 @@
     { id: 's17', name: 'Trail Mix', calories: 210, protein: 5, carbs: 24, fat: 11,
       tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: true } },
     { id: 's18', name: 'Smoked Salmon on Cucumber Rounds', calories: 120, protein: 12, carbs: 3, fat: 6,
-      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } }
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: false, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's19', name: 'Cherry Tomatoes with Mozzarella Pearls', calories: 90, protein: 6, carbs: 4, fat: 6,
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 's20', name: 'Plain Rice Cake', calories: 35, protein: 1, carbs: 7, fat: 0,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's21', name: 'Baby Carrots', calories: 35, protein: 1, carbs: 8, fat: 0,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's22', name: 'Hard-Boiled Egg', calories: 70, protein: 6, carbs: 1, fat: 5,
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's23', name: 'Cucumber Slices with Tzatziki', calories: 80, protein: 3, carbs: 8, fat: 4,
+      tags: { vegetarian: true, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: false, pescatarian: true, containsNuts: false } },
+    { id: 's24', name: 'Clementine', calories: 50, protein: 1, carbs: 12, fat: 0,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } },
+    { id: 's25', name: 'Turkey Jerky', calories: 80, protein: 11, carbs: 3, fat: 1,
+      tags: { vegetarian: false, vegan: false, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: false, containsNuts: false } },
+    { id: 's26', name: 'Baked Kale Chips', calories: 90, protein: 3, carbs: 10, fat: 5,
+      tags: { vegetarian: true, vegan: true, halal: true, kosher: true, glutenFree: true, dairyFree: true, pescatarian: true, containsNuts: false } }
   ];
 
   // ==================== Utilities ====================
