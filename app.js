@@ -834,7 +834,10 @@
     return {
       bmr: Math.round(bmr),
       tdee: Math.round(tdee),
-      calories: Math.round(target),
+      // Displayed calorie number runs 100 kcal above the computed target -
+      // same "adjust only what's shown" treatment as the protein/carbs
+      // offsets below; macros stay based on the pre-offset target.
+      calories: Math.round(target + 100),
       clamped: clamped,
       protein: { g: Math.round(proteinG), pct: proteinPct },
       carbs: { g: Math.round(carbG), pct: carbPct },
