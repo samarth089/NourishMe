@@ -152,20 +152,14 @@ body {
 
 .tabs {
   display: flex;
-  gap: 4px;
-  background: rgba(255,255,255,0.18);
-  border-radius: 999px;
-  padding: 4px;
+  flex-wrap: wrap;
+  gap: 6px;
   max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
 }
-.tabs::-webkit-scrollbar { display: none; }
 .tab-btn {
   flex: 0 0 auto;
   border: none;
-  background: transparent;
+  background: rgba(255,255,255,0.18);
   padding: 9px 16px;
   border-radius: 999px;
   font-size: 14px;
