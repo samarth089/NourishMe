@@ -934,13 +934,12 @@
     });
 
     var haveAnyIngredients = userIngredients.length > 0;
-    // A recipe only counts as a "near match" if the user actually has at
-    // least one of its ingredients - otherwise a recipe with very few total
-    // ingredients (e.g. a 2-ingredient snack-style recipe) can trivially
-    // satisfy "missing <= 2" with zero real overlap and crowd out recipes
-    // that share several ingredients with what was searched.
+    // Any recipe that uses at least one searched ingredient shows up -
+    // sorting (below) still puts full matches first, then closest matches
+    // (fewest missing), so the more relevant results surface at the top
+    // without hiding recipes just because several ingredients are missing.
     var candidates = haveAnyIngredients
-      ? scored.filter(function (s) { return s.canMake || (s.have.length > 0 && s.missing.length <= 2); })
+      ? scored.filter(function (s) { return s.canMake || s.have.length > 0; })
       : scored;
 
     candidates.sort(function (a, b) {
