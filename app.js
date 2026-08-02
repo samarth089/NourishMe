@@ -1587,6 +1587,7 @@
     document.getElementById('cook-view').classList.toggle('hidden', view !== 'cook');
     document.getElementById('snack-view').classList.toggle('hidden', view !== 'snack');
     document.getElementById('log-view').classList.toggle('hidden', view !== 'log');
+    document.getElementById('about-view').classList.toggle('hidden', view !== 'about');
     if (view === 'cook') renderCookView();
     if (view === 'snack') renderSnackView();
     if (view === 'log') renderLogView();

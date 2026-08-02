@@ -519,6 +519,11 @@ body {
   justify-content: center;
 }
 
+/* ---------- About ---------- */
+.about-card p { margin: 0 0 16px; font-size: 15px; color: var(--text); line-height: 1.6; }
+.about-card p:last-child { margin-bottom: 0; }
+.about-card strong { color: var(--green-dark); }
+
 /* ---------- Footer ---------- */
 .app-footer {
   text-align: center;
