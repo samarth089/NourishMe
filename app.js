@@ -853,10 +853,30 @@
   // ==================== Recipe matching ====================
   function normalizeIngredient(s) { return String(s || '').toLowerCase().trim().replace(/[.,!]/g, ''); }
 
+  function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  // Strips a trailing plural "s"/"es"/"ies" so "egg" lines up with "eggs"
+  // and "berry" with "berries" without needing exact string equality.
+  function singularize(s) {
+    if (s.length > 3 && s.slice(-3) === 'ies') return s.slice(0, -3) + 'y';
+    if (s.length > 2 && s.slice(-2) === 'es') return s.slice(0, -2);
+    if (s.length > 1 && s.slice(-1) === 's') return s.slice(0, -1);
+    return s;
+  }
+
   function ingredientMatches(userIng, recipeIng) {
     var a = normalizeIngredient(userIng), b = normalizeIngredient(recipeIng);
     if (!a || !b) return false;
-    return a === b || a.indexOf(b) !== -1 || b.indexOf(a) !== -1;
+    if (a === b) return true;
+
+    var as = singularize(a), bs = singularize(b);
+    if (as === bs) return true;
+
+    // Word-boundary containment only (e.g. "olive" matches "olive oil"),
+    // never raw substring - otherwise short ingredients falsely match inside
+    // unrelated words ("rice" inside "iced", "pea" inside "peanut").
+    return new RegExp('(^|\\s)' + escapeRegExp(as) + '(\\s|$)').test(bs) ||
+      new RegExp('(^|\\s)' + escapeRegExp(bs) + '(\\s|$)').test(as);
   }
 
   function recipePassesRestrictions(recipe, restrictions) {
@@ -914,7 +934,14 @@
     });
 
     var haveAnyIngredients = userIngredients.length > 0;
-    var candidates = haveAnyIngredients ? scored.filter(function (s) { return s.missing.length <= 2; }) : scored;
+    // A recipe only counts as a "near match" if the user actually has at
+    // least one of its ingredients - otherwise a recipe with very few total
+    // ingredients (e.g. a 2-ingredient snack-style recipe) can trivially
+    // satisfy "missing <= 2" with zero real overlap and crowd out recipes
+    // that share several ingredients with what was searched.
+    var candidates = haveAnyIngredients
+      ? scored.filter(function (s) { return s.canMake || (s.have.length > 0 && s.missing.length <= 2); })
+      : scored;
 
     candidates.sort(function (a, b) {
       if (haveAnyIngredients) {
