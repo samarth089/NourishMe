@@ -678,6 +678,16 @@
     return Math.min(max, Math.max(min, v));
   }
 
+  // Like clampNumber, but a missing/blank/invalid value stays null instead
+  // of being coerced to a fallback number - used for profile fields that
+  // must stay genuinely "not answered yet" until the user fills them in.
+  function clampNumberOrNull(n, min, max) {
+    if (n === null || n === undefined || n === '') return null;
+    var v = Number(n);
+    if (!isFinite(v)) return null;
+    return Math.min(max, Math.max(min, v));
+  }
+
   function on(el, type, handler) {
     if (!el) return;
     el.addEventListener(type, function (ev) {
@@ -701,34 +711,26 @@
     return { ft: ft, inch: inch };
   }
 
-  // ==================== Sample data ====================
-  function buildSampleData() {
+  // ==================== Empty state ====================
+  // First-ever load (and Reset) start completely blank - no profile,
+  // ingredients, or log entries the user didn't put there themselves.
+  function buildEmptyState() {
     return {
       profile: {
-        age: 28,
-        gender: 'male',
-        nationality: 'Italian',
-        weightKg: 75,
+        age: null,
+        gender: 'unspecified',
+        nationality: '',
+        weightKg: null,
         weightUnit: 'kg',
-        heightCm: 178,
+        heightCm: null,
         heightUnit: 'cm',
-        activityLevel: 'moderate',
+        activityLevel: 'sedentary',
         restrictions: [],
-        goal: 'muscle'
+        goal: 'lose'
       },
-      // Chosen to match well against Italian recipes specifically, since
-      // nationality now hard-filters the recipe list to one cuisine - a
-      // demo profile whose ingredients don't suit its own nationality would
-      // load to an empty "What Can I Cook?" page.
-      ingredients: ['spaghetti', 'garlic', 'olive oil', 'tomato', 'mozzarella', 'basil', 'bread', 'chili flakes', 'eggs', 'spinach'],
-      log: {
-        date: todayKey(),
-        items: [
-          { id: 'seed-log-1', name: 'Greek Yogurt with Berries', calories: 150, protein: 15, carbs: 18, fat: 2, addedAt: Date.now() },
-          { id: 'seed-log-2', name: 'Grilled Chicken & Rice Bowl', calories: 520, protein: 42, carbs: 55, fat: 14, addedAt: Date.now() }
-        ]
-      },
-      meta: { seeded: true, createdAt: Date.now() }
+      ingredients: [],
+      log: { date: todayKey(), items: [] },
+      meta: { seeded: false, createdAt: Date.now() }
     };
   }
 
@@ -778,22 +780,22 @@
       var parsed = JSON.parse(raw);
       if (!parsed || typeof parsed !== 'object' || !parsed.profile || !Array.isArray(parsed.ingredients)) return null;
       var p = parsed.profile;
-      p.age = clampNumber(p.age, 10, 100, 28);
+      p.age = clampNumberOrNull(p.age, 10, 100);
       p.gender = (p.gender === 'male' || p.gender === 'female') ? p.gender : 'unspecified';
       p.nationality = typeof p.nationality === 'string' ? p.nationality : '';
-      p.weightKg = clampNumber(p.weightKg, 1, 400, 75);
+      p.weightKg = clampNumberOrNull(p.weightKg, 1, 400);
       p.weightUnit = p.weightUnit === 'lb' ? 'lb' : 'kg';
-      p.heightCm = clampNumber(p.heightCm, 1, 260, 178);
+      p.heightCm = clampNumberOrNull(p.heightCm, 1, 260);
       p.heightUnit = p.heightUnit === 'ftin' ? 'ftin' : 'cm';
-      p.activityLevel = ACTIVITY_FACTORS[p.activityLevel] ? p.activityLevel : 'moderate';
+      p.activityLevel = ACTIVITY_FACTORS[p.activityLevel] ? p.activityLevel : 'sedentary';
       p.restrictions = Array.isArray(p.restrictions) ? p.restrictions : [];
-      p.goal = GOAL_LABELS[p.goal] ? p.goal : 'muscle';
+      p.goal = GOAL_LABELS[p.goal] ? p.goal : 'lose';
       if (!parsed.log || typeof parsed.log !== 'object' || !Array.isArray(parsed.log.items)) {
         parsed.log = { date: todayKey(), items: [] };
       }
       return parsed;
     } catch (e) {
-      console.warn('NourishMe: failed to load saved data, falling back to sample data.', e);
+      console.warn('NourishMe: failed to load saved data, starting from a blank state.', e);
       return null;
     }
   }
@@ -805,7 +807,7 @@
 
   function initState() {
     state = loadState();
-    if (!state) state = buildSampleData();
+    if (!state) state = buildEmptyState();
     ensureLogFresh();
     saveState();
   }
@@ -1027,7 +1029,7 @@
 
   function populateFormFromState() {
     var p = state.profile;
-    document.getElementById('f-age').value = p.age;
+    document.getElementById('f-age').value = (p.age === null || p.age === undefined) ? '' : p.age;
     document.getElementById('f-gender').value = p.gender;
     document.getElementById('f-nationality').value = p.nationality;
     document.getElementById('f-activity').value = p.activityLevel;
@@ -1045,11 +1047,18 @@
   function syncWeightInput() {
     var input = document.getElementById('f-weight');
     var kg = state.profile.weightKg;
+    if (kg === null || kg === undefined) { input.value = ''; return; }
     input.value = uiState.weightUnit === 'lb' ? round1(kgToLb(kg)) : round1(kg);
   }
 
   function syncHeightInput() {
     var cm = state.profile.heightCm;
+    if (cm === null || cm === undefined) {
+      document.getElementById('f-height-cm').value = '';
+      document.getElementById('f-height-ft').value = '';
+      document.getElementById('f-height-in').value = '';
+      return;
+    }
     if (uiState.heightUnit === 'cm') {
       document.getElementById('f-height-cm').value = round1(cm);
     } else {
@@ -1082,7 +1091,10 @@
 
   function readFormIntoState() {
     var p = state.profile;
-    p.age = clampNumber(document.getElementById('f-age').value, 10, 100, p.age);
+    var ageRaw = Number(document.getElementById('f-age').value);
+    if (isFinite(ageRaw) && ageRaw > 0) {
+      p.age = Math.min(100, Math.max(10, ageRaw));
+    }
     p.gender = document.getElementById('f-gender').value;
     p.nationality = document.getElementById('f-nationality').value.trim();
     p.activityLevel = document.getElementById('f-activity').value;
@@ -1108,6 +1120,12 @@
 
   function renderResult() {
     var card = document.getElementById('result-card');
+    if (!hasProfile()) {
+      card.innerHTML =
+        '<h2 class="card-title">🎯 Your daily target</h2>' +
+        '<div class="empty-state">Fill in your age, weight, and height above to see your personalised daily calorie and macro target. 🎯</div>';
+      return;
+    }
     var plan = computePlan(state.profile);
     var colors = { protein: 'var(--protein)', carbs: 'var(--carbs)', fat: 'var(--fat)' };
     var p1 = plan.protein.pct, p2 = p1 + plan.carbs.pct;
@@ -1563,8 +1581,8 @@
     });
 
     on(document.getElementById('reset-btn'), 'click', function () {
-      if (!confirm('Reset all data to sample data? This will erase your current plan and ingredients.')) return;
-      state = buildSampleData();
+      if (!confirm('Clear all your data? This will erase your plan, ingredients, and log.')) return;
+      state = buildEmptyState();
       saveState();
       renderPlanView();
       renderCookView();
@@ -1642,9 +1660,9 @@
       renderSnackView();
       renderLogView();
     } catch (e) {
-      console.error('NourishMe: startup error, resetting to sample data.', e);
+      console.error('NourishMe: startup error, resetting to a blank state.', e);
       try {
-        state = buildSampleData();
+        state = buildEmptyState();
         saveState();
         renderPlanView();
         renderCookView();
