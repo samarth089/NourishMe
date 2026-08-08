@@ -668,6 +668,15 @@
       .replace(/'/g, '&#39;');
   }
 
+  // Shared "nothing here yet" bowl icon for empty states.
+  function emptyStateIcon() {
+    return '<svg class="empty-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<path d="M8 22h32c0 8-6 15-16 15S8 30 8 22z" fill="var(--green-soft)" stroke="var(--border)" stroke-width="1.6" />' +
+      '<path d="M18 22c0-4 2-7 6-7s6 3 6 7" fill="none" stroke="var(--text-faint)" stroke-width="1.8" stroke-linecap="round" />' +
+      '<ellipse cx="24" cy="38" rx="9" ry="1.6" fill="var(--border)" />' +
+    '</svg>';
+  }
+
   function capitalizeWords(s) {
     return String(s || '').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
   }
@@ -1123,7 +1132,7 @@
     if (!hasProfile()) {
       card.innerHTML =
         '<h2 class="card-title">🎯 Your daily target</h2>' +
-        '<div class="empty-state">Fill in your age, weight, and height above to see your personalised daily calorie and macro target. 🎯</div>';
+        '<div class="empty-state">' + emptyStateIcon() + '<p>Fill in your age, weight, and height above to see your personalised daily calorie and macro target.</p></div>';
       return;
     }
     var plan = computePlan(state.profile);
@@ -1216,7 +1225,7 @@
       var hint = match.favoredCuisine
         ? 'No ' + match.favoredCuisine + ' recipes fit your dietary restrictions and ingredients right now. Try adding a few more ingredients, loosening a restriction, or changing your nationality in Your Plan.'
         : 'No recipes match your current filters. Try loosening a dietary restriction or adding a few more ingredients.';
-      grid.innerHTML = '<div class="empty-state">' + escapeHtml(hint) + ' 🍽️</div>';
+      grid.innerHTML = '<div class="empty-state">' + emptyStateIcon() + '<p>' + escapeHtml(hint) + '</p></div>';
       return;
     }
 
@@ -1397,7 +1406,7 @@
     meta.textContent = metaBits.join(' · ');
 
     if (!scored.length) {
-      grid.innerHTML = '<div class="empty-state">No snacks fit that limit and your dietary restrictions right now. Try a higher calorie limit. 🍽️</div>';
+      grid.innerHTML = '<div class="empty-state">' + emptyStateIcon() + '<p>No snacks fit that limit and your dietary restrictions right now. Try a higher calorie limit.</p></div>';
       return;
     }
 
@@ -1515,7 +1524,7 @@
   function renderLogItemsList() {
     var el = document.getElementById('log-items-list');
     if (!state.log.items.length) {
-      el.innerHTML = '<div class="ingredient-empty">Nothing logged yet today — add a meal, a snack, or use Quick add below.</div>';
+      el.innerHTML = '<div class="empty-state">' + emptyStateIcon() + '<p>Nothing logged yet today — add a meal, a snack, or use Quick add below.</p></div>';
       return;
     }
     el.innerHTML = state.log.items.map(function (it) {
