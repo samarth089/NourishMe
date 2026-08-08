@@ -517,6 +517,14 @@ body {
 .about-card p { margin: 0 0 16px; font-size: 15px; color: var(--text); line-height: 1.6; }
 .about-card p:last-child { margin-bottom: 0; }
 .about-card strong { color: var(--green-dark); }
+.about-card .about-contact {
+  padding-top: 16px;
+  margin-top: 4px;
+  border-top: 1px dashed var(--border);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.about-card .about-contact a { color: var(--green-dark); font-weight: 700; text-decoration: underline; }
 
 /* ---------- Footer ---------- */
 .app-footer {
